@@ -1,0 +1,33 @@
+<div >
+      <a class="top_menu" href="/logout">Logout</a>
+      <a class="top_menu" href="/groups">Groups Dashboard</a>
+</div>
+<h1><%= @group.name %></h1>
+<p><%= @group.description %></p>
+<p> <%= @group.id %></p>
+<% if @group.user.id == session[:user_id] %>
+  <h3>Created by: YOU</h3>
+<% else %>
+  <h3>Created by: <%= @group.user.first_name %></h3>
+<% end %>
+<h3>Members:</h3>
+<% @group.user_members.each do |u| %>
+  <p><%= u.first_name %>  <%= u.last_name %></p>
+
+<% end %>
+<% if  @group.user_members.include? @user %>
+
+  <form  action='/groups/leave' method='post'>
+    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+    <input name="group_id" type="hidden" value="<%= @group.id %>" />
+    <input type="hidden" name="_method" value="delete">
+    <input type='submit' value='Leave group'/>
+  </form>
+<% else %>
+
+  <form action='/groups/join/' method='post'>
+    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+    <input name="group_id" type="hidden" value='<%= @group.id %>' />
+    <input type='submit' value='Join the fun' />
+  </form>
+<% end %>

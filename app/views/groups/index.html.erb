@@ -1,0 +1,43 @@
+<div class="menu">
+    <a class="top_menu" href="/logout">Logout</a>
+</div>
+  <h1><%= "Hi, #{@user.first_name} #{@user.last_name}" %></h1>
+<div class="content">
+
+  <p>Here are some groups you many join:</p>
+
+  <% @groups.each do |g| %>
+  <h2>
+    <% if  (g.user_id == session[:user_id]) %>
+      <form class="group_delete" action='/groups/:id' method='post'>
+      <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+      <input name="group_id" type="hidden" value="<%= g.id %>" />
+      <input type="hidden" name="_method" value="delete">
+      <input type='submit' value='X'/>
+      </form>
+    <% end %>
+
+
+  <a href="/groups/<%= g.id %>"><%= g.name %></a></h2>
+  <p>Current members: <%= g.user_members.count %></p>
+  <p><%= g.description %></p>
+  <% end %>
+
+</div>
+<div class="meh">
+  <h2>Create a new organization</h2>
+
+  <% if flash[:group_errors] %>
+    <%  flash[:group_errors].each do |error| %>
+    <p class="err_mess"><%= error %></p>
+    <% end %>
+  <% end %>
+
+  <form class="column_form" action='/groups/create/' method='post'>
+    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+    <input type="hidden" name='group[user_id]' value="<%= session[:user_id] %>" >
+    <label>Name:<input type='text' name='group[name]'/></label>
+    <label>Description:<input type='textarea' name='group[description]'/></label>
+    <input type='submit' value='Create' />
+  </form>
+</div>

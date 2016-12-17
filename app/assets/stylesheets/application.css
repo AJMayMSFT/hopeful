@@ -1,0 +1,81 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ *{
+    font-family: 'helvetica neue', arial, verdana, sans-serif
+  }
+  h1, h2 {
+    color: darkblue;
+  }
+  .err_mess{
+    color: red;
+  }
+  .column_form {
+    display: inline-block;
+    vertical-align:top;
+    width: 300px;
+    border: 1px solid lightgray;
+    padding: 10px;
+  }
+  .column_form label{
+    display: block;
+    padding: 5px;
+
+  }
+  .column_form label input{
+    margin-left: 10px;
+
+  }
+  .form_button{
+    padding: 5px 10px;
+  }
+  .content{
+    display: inline-block;
+    vertical-align:top;
+    width: 500px;
+    padding: 10px;
+  }
+  th, td {
+    padding: 5px 20px;
+  }
+  .event_panel{
+    display: inline-block;
+    vertical-align:top;
+    width: 400px;
+  }
+  .comment_panel{
+    display: inline-block;
+    vertical-align:top;
+    width: 300px;
+  }
+  .top_menu {
+    display: inline-block;
+    width: 200px;
+
+  }
+  .meh {
+    display: inline-block;
+    vertical-align:top;
+    width: 350px;
+    padding: 10px;
+  }
+  /*form, h1, p{
+    padding: 10px;
+  }
+  form label{
+    display: block;
+    padding: 5px 0px;
+  }*/
+  p {margin: 5px;}

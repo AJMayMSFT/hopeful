@@ -1,0 +1,34 @@
+<div class="column_form">
+  <h2>Register</h2>
+
+  <% if flash[:reg_errors] %>
+    <%  flash[:reg_errors].each do |error| %>
+    <p class="err_mess"><%= error %></p>
+    <% end %>
+  <% end %>
+
+  <form action='/register' method='post'>
+    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+
+    <label>First Name:<input type='text' name='user[first_name]' /></label>
+    <label>Last Name:<input type='text' name='user[last_name]' /></label>
+    <label>Email:<input type='text' name='user[email]' /></label>
+    <label>Password:<input type='password' name='user[password]' /></label>
+    <label>Confirm password:<input type='password' name='user[password_confirmation]' /></label>
+    <input class="form_button" type='submit' value='Register' />
+  </form>
+</div>
+
+<div class="column_form">
+  <h2>Log in</h2>
+  <% if flash[:log_errors] %>
+  <p class="err_mess"><%= flash[:log_errors] %></p>
+  <% end %>
+  <form action='/login' method='post'>
+    <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+  </label>
+    <label>Email:<input type='text' name='user[email]' /></label>
+    <label>Password:<input type='text' name='user[password]' /></label>
+    <input class="form_button" type='submit' value='Log in' />
+  </form>
+</div>
